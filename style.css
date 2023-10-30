@@ -1,0 +1,235 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    /* font */
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 400;
+    /* self */
+    background: linear-gradient(150deg, var(--body__background__color1) 0%, var(--body__background__color2) 100%);
+    /* kids */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    /* self */
+    min-width: var(--root__width);
+    height: 100vh;
+    /* kids */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.root {
+    /* self */
+    width: var(--root__width);
+    height: var(--root__height);
+    background: linear-gradient(180deg, var(--root__background__color1) 0%, var(--root__background__color2) 100%);
+    border-radius: var(--root__radius);
+    /* kids */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--sublabels__height) var(--mainlabel__height) var(--buttons__height);
+}
+.root__sublabels {
+    /* kids */
+    display: flex;
+    flex-direction: column-reverse;
+    justify-self: center;
+    align-self: end;
+}
+.root__mainlabel {
+    /* kids */
+    justify-self: center;
+    align-self: center;
+}
+.root__buttons {
+    /* self */
+    justify-self: center;
+    align-self: start;
+    /* kids */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 5fr);
+    column-gap: var(--buttons__gap-column);
+    row-gap: var(--buttons__gap-row);
+    padding-top: var(--buttons__padding-top);
+}
+.sublabels__label {
+    width: var(--sublabels__label__width);
+    height: var(--sublabels__label__height);
+    background-color: transparent;
+    color: var(--sublabels__label__text__color);
+    border: none;
+    text-align: right;
+    pointer-events: none;
+    font-family: inherit;
+    font-size: var(--sublabels__label__text__size);
+}
+.mainlabel__label {
+    width: var(--mainlabel__label__width);
+    height: var(--mainlabel__label__height);
+    background-color: transparent;
+    color: var(--mainlabel__label__text__color);
+    border: none;
+    text-align: right;
+    pointer-events: none;
+    font-family: inherit;
+    font-size: var(--mainlabel__label__text__size);
+}
+.buttons__button {
+    /* self */
+    width: var(--buttons__button__width);
+    height: var(--buttons__button__height);
+    border: none;
+    border-radius: var(--buttons__button__radius);
+    color: var(--buttons__button__text__color);
+    font-family: inherit;
+    font-size: var(--buttons__button__text__size);
+    z-index: 1;
+    /* kids */
+    position: relative;
+    /* svg */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.buttons__button::before {
+    width: var(--buttons__button__before__width);
+    height: var(--buttons__button__before__height);
+    border-radius: var(--buttons__button__before__radius);
+    position: absolute;
+    left: var(--buttons__button__before__left);
+    top: var(--buttons__button__before__top);
+    filter: blur(var(--buttons__button__before__filter));
+    z-index: -1;
+    content: '';
+}
+.function {
+    background: var(--function__color);
+    box-shadow: var(--customize__shadow1) var(--customize__shadow1) var(--customize__shadow2) rgba(0, 0, 0, 0.15), inset var(--customize__shadow3) var(--customize__shadow3) var(--customize__shadow3) #636C7D;
+}
+.function::before {
+    background: linear-gradient(134.24deg, var(--function__before__color1) 15.47%, var(--function__before__color2) 94.71%);
+}
+.action {
+    background: var(--action__color);
+    box-shadow: var(--customize__shadow1) var(--customize__shadow1) var(--customize__shadow2) rgba(0, 0, 0, 0.15), inset var(--customize__shadow3) var(--customize__shadow3) var(--customize__shadow3) #DC862D;
+}
+.action::before {
+    background: linear-gradient(134.24deg, var(--action__before__color1) 15.47%, var(--action__before__color2) 94.71%);
+}
+.number {
+    background: var(--number__color);
+    box-shadow: var(--customize__shadow1) var(--customize__shadow1) var(--customize__shadow2) rgba(0, 0, 0, 0.15), inset var(--customize__shadow3) var(--customize__shadow3) var(--customize__shadow3) #383E4E;
+}
+.number::before {
+    background: linear-gradient(134.24deg, var(--number__before__color1) 15.47%, var(--number__before__color2) 94.71%);
+}
+.zero {
+    width: var(--customize__zero__width);
+    grid-column: span 2;
+}
+.zero::before {
+    width: var(--customize__zero__before__width);
+}
+:root {
+    /* body */
+    --body__background__color1: #eeeeee;
+    --body__background__color2: #cccccc;
+    /* main */
+    --root__width__default: 375px;
+    --root__height__default: 812px;
+    --root__scale__width: 1.25;                         /* master */
+    --root__scale__height: var(--root__scale__width);   /* slave */
+    /* root */
+    --root__width: calc(var(--root__width__default) / var(--root__scale__width));
+    --root__height: calc(var(--root__height__default) / var(--root__scale__height));
+    --root__radius__default: 60px;
+    --root__radius: calc(var(--root__radius__default) / var(--root__scale__width));
+    --root__background__color1: #242833;
+    --root__background__color2: #16181D;
+    /* root__sublabels */
+    --sublabels__height__default: 248px;
+    --sublabels__height: calc(var(--sublabels__height__default) / var(--root__scale__height));
+    /* root__mainlabel */
+    --mainlabel__height__default: 67px;
+    --mainlabel__height: calc(var(--mainlabel__height__default) / var(--root__scale__height));
+    /* root__buttons */
+    --buttons__height__default: calc(var(--root__height__default) - var(--sublabels__height__default) - var(--mainlabel__height__default));
+    --buttons__height: calc(var(--buttons__height__default) / var(--root__scale__height));
+    --buttons__gap__default: 10px;
+    --buttons__gap-column: calc(var(--buttons__gap__default) / var(--root__scale__width));
+    --buttons__gap-row: calc(var(--buttons__gap__default) / var(--root__scale__height));
+    --buttons__padding-top__default: 35px;
+    --buttons__padding-top: calc(var(--buttons__padding-top__default) / var(--root__scale__width));
+    /* sublabels__label */
+    --sublabels__label__width__default: 339px;
+    --sublabels__label__height__default: 33px;
+    --sublabels__label__width: calc(var(--sublabels__label__width__default) / var(--root__scale__width));
+    --sublabels__label__height: calc(var(--sublabels__label__height__default) / var(--root__scale__height));
+    --sublabels__label__text__size__default: 28px;
+    --sublabels__label__text__size: calc(var(--sublabels__label__text__size__default) / var(--root__scale__height));
+    --sublabels__label__text__color: #525D6D;
+    /* mainlabel__label */
+    --mainlabel__label__width__default: 339px;
+    --mainlabel__label__height__default: var(--mainlabel__height__default);
+    --mainlabel__label__width: calc(var(--mainlabel__label__width__default) / var(--root__scale__width));
+    --mainlabel__label__height: calc(var(--mainlabel__label__height__default) / var(--root__scale__height));
+    --mainlabel__label__text__size__default: 56px;
+    --mainlabel__label__text__size: calc(var(--mainlabel__label__text__size__default) / var(--root__scale__height));
+    --mainlabel__label__text__color: #FFFFFF;
+    /* buttons__button */
+    --buttons__button__width__default: 77px;
+    --buttons__button__height__default: 77px;
+    --buttons__button__width: calc(var(--buttons__button__width__default) / var(--root__scale__width));
+    --buttons__button__height: calc(var(--buttons__button__height__default) / var(--root__scale__height));
+    --buttons__button__radius__default: 23px;
+    --buttons__button__radius: calc(var(--buttons__button__radius__default) / var(--root__scale__width));
+    --buttons__button__text__size__default: 21px;
+    --buttons__button__text__size: calc(var(--buttons__button__text__size__default) / var(--root__scale__height));
+    --buttons__button__text__color: #FFFFFF;
+    /* buttons__button__before */
+    --buttons__button__before__width__default: 66.13px;
+    --buttons__button__before__height__default: 66.13px;
+    --buttons__button__before__width: calc(var(--buttons__button__before__width__default) / var(--root__scale__width));
+    --buttons__button__before__height: calc(var(--buttons__button__before__height__default) / var(--root__scale__height));
+    --buttons__button__before__radius__default: 18px;
+    --buttons__button__before__radius: calc(var(--buttons__button__before__radius__default) / var(--root__scale__width));
+    --buttons__button__before__left: calc( (var(--buttons__button__width__default) - var(--buttons__button__before__width__default)) / 2 / var(--root__scale__width) );
+    --buttons__button__before__top: calc( (var(--buttons__button__height__default) - var(--buttons__button__before__height__default)) / 2 / var(--root__scale__height) );
+    --buttons__button__before__filter__default: 1px;
+    --buttons__button__before__filter: calc(var(--buttons__button__before__filter__default) / var(--root__scale__width));
+    /* buttons customize*/
+    --customize__shadow1__default: 3px;
+    --customize__shadow2__default: 7px;
+    --customize__shadow3__default: 4px;
+    --customize__shadow1: calc(var(--customize__shadow1__default) / var(--root__scale__width));
+    --customize__shadow2: calc(var(--customize__shadow2__default) / var(--root__scale__width));
+    --customize__shadow3: calc(var(--customize__shadow3__default) / var(--root__scale__width));
+    --function__color: #545F71;
+    --function__before__color1: #465262;
+    --function__before__color2: #626B7C;
+    --function__shadow__color: #636C7D;
+    --action__color: #D9781F;
+    --action__before__color1: #DD732F;
+    --action__before__color2: #E28D21;
+    --action__shadow__color: #DC862D;
+    --number__color: #252B38;
+    --number__shadow__color: #383E4E;
+    --number__before__color1: #2A303E;
+    --number__before__color2: #393E51;
+    --customize__zero__width: calc( var(--buttons__button__width) * 2 + var(--buttons__gap-column) );
+    --customize__zero__before__width: calc( var(--customize__zero__width) - var(--buttons__button__before__left) * 2);
+}
+/* .svg { */
+    /* border: 1px solid red; */
+    /* width: calc(23px / 1.25); */
+    /* scale: 100% 50%; */
+/* } */
